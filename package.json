@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clasp": "clasp push -P ./src",
-    "push": "clasp push -P ./src && git add . && git commit -m \"update\" && git push origin main"
+    "push": "clasp push -P ./src && git add . && git commit -m \"${npm_config_message}\" && git push origin main"
   },
   "author": "",
   "license": "ISC"
