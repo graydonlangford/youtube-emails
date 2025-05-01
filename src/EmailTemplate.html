@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh hot tasty videos from your subscriptions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .channel {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        .channel:last-child {
+            border-bottom: none;
+        }
+        .channel-header {
+            display: flex;
+            align-items: center;
+        }
+        .channel-thumbnail {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .videos {
+            margin-top: 10px;
+        }
+        .video {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .video-thumbnail {
+            width: 100px;
+            height: 56px;
+            margin-right: 10px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin: 0;
+        }
+        .video-description {
+            margin: 0;
+            color: #555;
+        }
+        a.fill-div {
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Channels & Recent Videos</h1>
+
+        <? data.forEach((sub, i, subs) => { ?>
+
+        <? if (sub.videos.length > 0) { ?>
+        <div class="channel">
+            <div class="channel-header">
+                <img class="channel-thumbnail" src= <?= sub.snippet.thumbnails.default.url ?> >
+                <span><?= sub.snippet.title ?></span>
+            </div>
+            <div class="videos">
+                <? sub.videos.forEach((video, i, videos) => { ?>
+                <div class="video">
+                    <a class="fill-div" href= <?= "https://www.youtube.com/watch?v=" + video.id.videoId ?> >
+                      <table>
+                        <tr>
+                          <td>
+                            <img class="video-thumbnail" src= <?= video.snippet.thumbnails.default.url ?> >
+                          </td>
+                          <td>
+                            <div>
+                                <p class="video-title"><?= video.snippet.title ?></p>
+                                <p class="video-description"><?= video.snippet.description ?></p>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </a>
+                </div>
+                <?})?>
+            </div>
+        </div>
+        <? } ?>
+        <? }) ?>
+        
+    </div>
+</body>
+</html>

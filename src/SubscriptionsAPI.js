@@ -1,7 +1,7 @@
 function requestSubscriptionPage(pageToken) {
   // console.log('getting page %s', pageToken)
   try {
-    const results = YouTube.Subscriptions.list('id, snippet, contentDetails', {mine: true, maxResults: 5, pageToken: pageToken})
+    const results = YouTube.Subscriptions.list('id, snippet, contentDetails', {mine: true, maxResults: 50, pageToken: pageToken})
     if (results == null) {
       console.log('Unable to find subscriptions')
       return
@@ -10,6 +10,11 @@ function requestSubscriptionPage(pageToken) {
   } catch (err) {
     console.log('Failed with error %s', err.message)
   }
+}
+
+function test () {
+  let sub = requestSubscriptionPage(null)
+  console.log(JSON.stringify(sub))
 }
 
 /**
